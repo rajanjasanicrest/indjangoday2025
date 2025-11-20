@@ -6,13 +6,13 @@ import { FaDiscord, FaLinkedinIn, FaTwitter, FaYoutube, FaGlobe } from 'react-ic
 import ContactSection from './Footers';
 
 // Helper function to convert name to image path
-const getImagePath = (name, extension = 'jpg') => {
+const getImagePath = (name:string, extension = 'jpg') => {
     if (!name) return '';
     return `/images/${name.toLowerCase().replace(/\s+/g, '_')}.${extension}`;
 };
 
 // Helper function to clean and format URLs
-const cleanUrl = (url, isLinkedIn = false, isWebsite = false) => {
+const cleanUrl = (url:string, isLinkedIn = false, isWebsite = false) => {
     if (!url || url === '' || url === 'No' || url === 'Not have atm') return '';
     
     // For LinkedIn, add https:// if missing
@@ -35,6 +35,37 @@ const cleanUrl = (url, isLinkedIn = false, isWebsite = false) => {
 };
 
 const teamCategories = [
+    {
+        name: 'Organizers',
+        members: [
+            {
+                name: 'Bhuvnesh Sharma',
+                role: '',
+                id: 'sponsorship-0',
+                image: getImagePath('Bhuvnesh Sharma', 'jpeg'),
+                links: {
+                    discord: '',
+                    linkedin: cleanUrl('https://www.linkedin.com/in/devilsautumn', true),
+                    twitter: cleanUrl('https://x.com/DevilsAutumn', true),
+                    youtube: '',
+                    website: '',
+                }
+            },
+            {
+                name: 'Kuldeep Pisda',
+                role: '',
+                id: 'program-committee-1',
+                image: getImagePath('Kuldeep Pisda'),
+                links: {
+                    discord: '',
+                    linkedin: cleanUrl('https://www.linkedin.com/in/kuldeep-pisda/', true),
+                    twitter: cleanUrl('https://x.com/kdpisda'),
+                    youtube: cleanUrl('https://www.youtube.com/@kdpisda'),
+                    website: cleanUrl('https://kdpisda.in', false, true),
+                },
+            },
+        ],
+    },
     {
         name: 'Program Committee',
         members: [
@@ -80,7 +111,7 @@ const teamCategories = [
         ],
     },
     {
-        name: 'Sponsorship',
+        name: 'Sponsorship Committee',
         members: [
             {
                 name: 'Bhuvnesh Sharma',
@@ -90,15 +121,28 @@ const teamCategories = [
                 links: {
                     discord: '',
                     linkedin: cleanUrl('https://www.linkedin.com/in/devilsautumn', true),
-                    twitter: cleanUrl('https://x.com/DevilsAutumn_', true),
+                    twitter: cleanUrl('https://x.com/DevilsAutumn', true),
                     youtube: '',
                     website: '',
                 }
-            }
+            },
+            {
+                name: 'Kuldeep Pisda',
+                role: '',
+                id: 'program-committee-1',
+                image: getImagePath('Kuldeep Pisda'),
+                links: {
+                    discord: '',
+                    linkedin: cleanUrl('https://www.linkedin.com/in/kuldeep-pisda/', true),
+                    twitter: cleanUrl('https://x.com/kdpisda'),
+                    youtube: cleanUrl('https://www.youtube.com/@kdpisda'),
+                    website: cleanUrl('https://kdpisda.in', false, true),
+                },
+            },
         ],
     },
     {
-        name: 'Design and Website',
+        name: 'Design and Website Team',
         members: [
             {
                 name: 'Akash Chaudhary',
@@ -128,7 +172,7 @@ const teamCategories = [
         ],
     },
     {
-        name: 'Social Media',
+        name: 'Social Media Team',
         members: [
             {
                 name: 'Anshika Gupta',
@@ -159,7 +203,7 @@ const teamCategories = [
         ],
     },
     {
-        name: 'Community Partners',
+        name: 'Community Partner Team',
         members: [
             {
                 name: 'Utkarsh Upadhyay',
@@ -190,17 +234,17 @@ const teamCategories = [
         ],
     },
     {
-        name: 'Logistics',
+        name: 'Logistics Team',
         members: [
             {
-                name: 'Tiyasha Banerjee',
+                name: 'Arjun Suresh',
                 role: '',
-                id: 'logistics-0',
-                image: getImagePath('Tiyasha Banerjee'),
+                id: 'logistics-2',
+                image: getImagePath('Arjun Suresh', 'jpeg'),
                 links: {
                     discord: '',
-                    linkedin: cleanUrl('https://www.linkedin.com/in/tiyasha-banerjee-06?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', true),
-                    twitter: cleanUrl('https://x.com/TiyashaB06?t=C9SmranBr5QrZTduhjUSMw&s=09'),
+                    linkedin: cleanUrl('https://linkedin.com/in/arjun-suresh108', true),
+                    twitter: '',
                     youtube: '',
                     website: '',
                 },
@@ -218,11 +262,24 @@ const teamCategories = [
                     website: '',
                 },
             },
+            {
+                name: 'Tiyasha Banerjee',
+                role: '',
+                id: 'logistics-0',
+                image: getImagePath('Tiyasha Banerjee'),
+                links: {
+                    discord: '',
+                    linkedin: cleanUrl('https://www.linkedin.com/in/tiyasha-banerjee-06', true),
+                    twitter: cleanUrl('https://x.com/TiyashaB06'),
+                    youtube: '',
+                    website: '',
+                },
+            },
         ],
     },
 ];
 
-function MemberCard({ name, role, links, image }) {
+function MemberCard({ name, role, links, image }: { name: string; role: string; links: any; image: string }) {
     return (
         <div className="flex flex-col">
             {/* Photo area with overlapping socials */}
@@ -276,14 +333,10 @@ export default function Team() {
                 <div className="flex-1 flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-24 gap-4 sm:gap-6 md:gap-8 min-h-0 py-6 sm:py-8 md:py-0">
                     <div className="relative z-10 text-center md:text-left w-full md:w-auto">
                         <h1 className="font-serif text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight">
-                            How It All Began
+                            The Team
                         </h1>
-                        <p className="mt-3 sm:mt-4 text-white text-sm sm:text-base md:text-lg max-w-xl mx-auto md:mx-0">
-                            All About Django Day India
-                        </p>
                         <p className="mt-3 sm:mt-4 text-white/90 text-xs sm:text-sm md:text-base max-w-2xl mx-auto md:mx-0 px-2 sm:px-0">
-                            Django Day India is volunteer-driven, and each year we seek passionate volunteers whose
-                            efforts ensure the conference's success.
+                            The people whose late nights, countless calls, endless coordination, and unwavering enthusiasm transformed DjangoDay India from a vision into a reality — and set the foundation for a stronger Django ecosystem in India.
                         </p>
                     </div>
 
@@ -347,7 +400,6 @@ export default function Team() {
             {/* Team Section */}
             <section className="relative flex flex-col md:flex-row items-start justify-center px-4 sm:px-6 md:px-20 py-8 sm:py-10 md:py-12 overflow-y-auto min-h-screen">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-6 sm:py-8 md:py-16 w-full">
-                    <h2 className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#14342B] mb-8 sm:mb-10 md:mb-12 text-center md:text-left">The Team</h2>
 
                     <div className="space-y-12 sm:space-y-14 md:space-y-16">
                         {teamCategories.map((category) => (
