@@ -279,7 +279,7 @@ const teamCategories = [
     },
 ];
 
-function MemberCard({ name, role, links, image }: { name: string; role: string; links: any; image: string }) {
+function MemberCard({ name, role, links, image }: { name: string; role: string; links: { discord?: string; linkedin?: string; twitter?: string; youtube?: string; website?: string }; image: string }) {
     return (
         <div className="flex flex-col">
             {/* Photo area with overlapping socials */}
@@ -301,11 +301,11 @@ function MemberCard({ name, role, links, image }: { name: string; role: string; 
                 {/* Social row (overlapping the bottom edge) */}
                 <div className="absolute -bottom-3 sm:-bottom-4 md:-bottom-5 left-2 sm:left-3 flex items-center gap-1.5 sm:gap-2 md:gap-3 flex-wrap max-w-[calc(100%-1rem)]">
                     {[
-                        { icon: FaDiscord, href: links && links.discord && links.discord.startsWith('http') ? links.discord : null },
-                        { icon: FaLinkedinIn, href: links && links.linkedin },
-                        { icon: FaTwitter, href: links && links.twitter },
-                        { icon: FaYoutube, href: links && links.youtube },
-                        { icon: FaGlobe, href: links && links.website },
+                        { icon: FaDiscord, href: links?.discord?.startsWith('http') ? links.discord : undefined },
+                        { icon: FaLinkedinIn, href: links?.linkedin },
+                        { icon: FaTwitter, href: links?.twitter },
+                        { icon: FaYoutube, href: links?.youtube },
+                        { icon: FaGlobe, href: links?.website },
                     ]
                         .filter((item) => !!item.href)
                         .map((item, idx) => (
